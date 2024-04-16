@@ -42,7 +42,7 @@ public class MergeSort {
     }
 }
 
-class Usage {
+class MergeSortUsage {
     public static void main(String[] args) {
         int[] arr = {11, 3, 32, 24, 1, -3};
 
