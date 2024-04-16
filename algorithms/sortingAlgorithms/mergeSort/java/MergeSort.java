@@ -31,12 +31,12 @@ public class MergeSort {
      * @param arr The array to be sorted.
      * @return The sorted array.
      */
-    public static int[] sort(int[] arr) {
+    public int[] sort(int[] arr) {
         if (arr.length <= 1) return arr;
 
         int mid = arr.length / 2;
         int[] left = sort(Arrays.copyOfRange(arr, 0, mid));
-        int[] right = sort(Arrays.copyOfRange(arr, mid, arr.length));;
+        int[] right = sort(Arrays.copyOfRange(arr, mid, arr.length));
 
         return merge(left, right);
     }
@@ -46,6 +46,7 @@ class Usage {
     public static void main(String[] args) {
         int[] arr = {11, 3, 32, 24, 1, -3};
 
-        System.out.println("mergeSort: " + Arrays.toString(MergeSort.sort(arr)));
+        MergeSort mergeSort = new MergeSort();
+        System.out.println("mergeSort: " + Arrays.toString(mergeSort.sort(arr)));
     }
 } 
