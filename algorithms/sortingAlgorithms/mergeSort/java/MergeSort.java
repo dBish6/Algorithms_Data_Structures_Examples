@@ -47,6 +47,6 @@ class MergeSortUsage {
         int[] arr = {11, 3, 32, 24, 1, -3};
 
         MergeSort mergeSort = new MergeSort();
-        System.out.println("mergeSort: " + Arrays.toString(mergeSort.sort(arr)));
+        System.out.println("MergeSort: " + Arrays.toString(mergeSort.sort(arr)));
     }
 } 

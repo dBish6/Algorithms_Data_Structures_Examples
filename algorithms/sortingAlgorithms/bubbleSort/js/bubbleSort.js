@@ -52,3 +52,5 @@ function bubbleSortRecursive(arr) {
 }
 
 console.log("bubbleSortRecursive", bubbleSortRecursive([11, 3, 32, 24, 1, -3]));
+
+module.exports = { bubbleSortFor, bubbleSortRecursive };

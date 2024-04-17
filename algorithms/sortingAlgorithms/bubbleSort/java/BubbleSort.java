@@ -9,7 +9,7 @@ public class BubbleSort {
      * @param arr The array to be sorted.
      * @return The sorted array.
      */
-    public static int[] bubbleSortFor(int[] arr) {
+    public int[] bubbleSortFor(int[] arr) {
         boolean noSwaps;
         int n = arr.length;
         
@@ -36,7 +36,7 @@ public class BubbleSort {
      * @param arr The array to be sorted.
      * @return The sorted array.
      */
-    public static int[] bubbleSortRecursive(int[] arr) {
+    public int[] bubbleSortRecursive(int[] arr) {
         boolean noSwaps = true;
 
         for (int i = 0; i < arr.length - 1; i++) {
@@ -54,11 +54,14 @@ public class BubbleSort {
             return bubbleSortRecursive(arr);
         }
     }
+}
 
+class BubbleSortUsage {
     public static void main(String[] args) {
         int[] arr = {11, 3, 32, 24, 1, -3};
 
-        System.out.println("bubbleSortFor: " + Arrays.toString(bubbleSortFor(arr)));
-        System.out.println("bubbleSortRecursive: " + Arrays.toString(bubbleSortRecursive(arr)));
+        BubbleSort bubbleSort = new BubbleSort();
+        System.out.println("bubbleSortFor: " + Arrays.toString(bubbleSort.bubbleSortFor(arr)));
+        System.out.println("bubbleSortRecursive: " + Arrays.toString(bubbleSort.bubbleSortRecursive(arr)));
     }
-}
+  } 
