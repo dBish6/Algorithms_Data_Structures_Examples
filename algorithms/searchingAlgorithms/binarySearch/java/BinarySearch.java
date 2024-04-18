@@ -8,7 +8,7 @@ public class BinarySearch {
      * @return The index of the target element if found, otherwise -1.
      */
     public int search(int[] arr, int target) {
-        if (arr == null) return -1;
+        if (arr == null || arr.length == 0) return -1;
         int left = 0;
         int right = arr.length - 1;
 
