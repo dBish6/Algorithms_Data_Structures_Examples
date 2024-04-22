@@ -41,8 +41,8 @@ class SinglyLinkedList {
       this.tail.next = node;
       this.tail = node;
     }
-    this.length++;
 
+    this.length++;
     return this;
   }
 
@@ -107,8 +107,8 @@ class SinglyLinkedList {
       node.next = this.head;
       this.head = node;
     }
-    this.length++;
 
+    this.length++;
     return this;
   }
 
@@ -154,7 +154,7 @@ class SinglyLinkedList {
   }
 
   /**
-   * Set a value of a node base on it's index.
+   * Set a value of a node base on a index.
    *
    * O(n) Time
    * @param val Your new value.
@@ -185,11 +185,10 @@ class SinglyLinkedList {
       const newNode = new Node(val),
         target = this.get(index);
 
-      const temp = target.next;
+      newNode.next = target.next;
       target.next = newNode;
-      newNode.next = temp;
-      this.length++;
 
+      this.length++;
       return this;
     }
   }
@@ -208,8 +207,8 @@ class SinglyLinkedList {
 
       const prev = this.get(index - 1);
       prev.next = prev.next.next;
-      this.length--;
 
+      this.length--;
       return this;
     }
   }
