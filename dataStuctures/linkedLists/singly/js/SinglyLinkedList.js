@@ -113,7 +113,7 @@ class SinglyLinkedList {
   }
 
   /**
-   * Get a node at a curtain index.
+   * Get a node at a certain index.
    *
    * O(n) Time
    * @param index
@@ -256,3 +256,5 @@ class SinglyLinkedList {
     return arr;
   }
 }
+
+module.exports = SinglyLinkedList;
