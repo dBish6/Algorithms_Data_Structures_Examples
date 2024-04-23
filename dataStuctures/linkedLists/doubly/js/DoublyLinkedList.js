@@ -51,7 +51,7 @@ class DoublyLinkedList {
   /**
    * Removes a node at the end.
    *
-   * O(n) Time
+   * O(1) Time
    * @returns {DoublyLinkedList | undefined}
    */
   pop() {
@@ -266,3 +266,5 @@ class DoublyLinkedList {
     return arr;
   }
 }
+
+module.exports = DoublyLinkedList;
