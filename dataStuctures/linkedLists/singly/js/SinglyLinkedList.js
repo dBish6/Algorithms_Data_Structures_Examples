@@ -1,11 +1,15 @@
 // Better than arrays for insertion, that's pretty much it.
 
 /**
- * Represents a node in a singly linked list.
- *
  * @typedef {Object} node
  * @property {any} val - The value of the node.
  * @property {node | null} next - Reference to the next node.
+ */
+
+/**
+ * Represents a node in a singly linked list.
+ *
+ * @implements {node}
  */
 class Node {
   constructor(val) {

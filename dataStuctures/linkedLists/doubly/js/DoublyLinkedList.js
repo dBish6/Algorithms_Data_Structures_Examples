@@ -1,10 +1,14 @@
 /**
- * Represents a node in a doubly linked list.
- *
  * @typedef {Object} node
  * @property {any} val - The value of the node.
  * @property {node | null} next - Reference to the next node.
  * @property {node | null} prev - Reference to the next node.
+ */
+
+/**
+ * Represents a node in a doubly linked list.
+ *
+ * @implements {node}
  */
 class Node {
   constructor(val) {
