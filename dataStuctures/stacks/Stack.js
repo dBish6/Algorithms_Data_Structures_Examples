@@ -26,7 +26,7 @@ class Stack {
    *
    * O(1) Time
    * @param val
-   * @returns {SinglyLinkedList}
+   * @returns {number}
    */
   push(val) {
     var node = new Node(val);
