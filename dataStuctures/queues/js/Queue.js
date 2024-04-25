@@ -12,52 +12,52 @@ class Node {
 }
 
 /**
- * A stack class that uses a singly linked list.
+ * A queue class that uses a singly linked list.
  */
-class Stack {
+class Queue {
   constructor() {
-    this.top = null;
-    this.bottom = null;
+    this.first = null;
+    this.last = null;
     this.length = 0;
   }
 
   /**
-   * Adds an element at the top and returns the length.
+   * Adds an element at beginning of the queue and returns the length.
    *
    * O(1) Time
    * @param val
    * @returns {number}
    */
-  push(val) {
+  enqueue(val) {
     const node = new Node(val);
 
-    if (!this.top) {
-      this.top = node;
-      this.bottom = node;
+    if (!this.first) {
+      this.first = node;
+      this.last = node;
     } else {
-      node.next = this.top;
-      this.top = node;
+      this.last.next = node;
+      this.last = node;
     }
 
     return this.length++;
   }
 
   /**
-   * Removes the top element from the stack and returns it.
+   * Removes the first element in queue and returns it.
    *
    * O(1) Time
    * @returns {any | undefined}
    */
-  pop() {
-    if (!this.top) return undefined;
-    const temp = this.top;
+  dequeue() {
+    if (!this.first) return undefined;
+    const temp = this.first;
 
-    if (this.top === this.bottom) this.bottom = null;
-    this.top = this.top.next;
+    if (this.first === this.last) this.last = null;
+    this.first = this.first.next;
 
     this.length--;
     return temp.val;
   }
 }
 
-module.exports = Stack;
+module.exports = Queue;
