@@ -29,13 +29,13 @@ class Stack {
    * @returns {number}
    */
   push(val) {
-    var node = new Node(val);
+    const node = new Node(val);
 
     if (!this.top) {
       this.top = node;
       this.bottom = node;
     } else {
-      this.top.next = node;
+      node.next = this.top;
       this.top = node;
     }
 
@@ -49,7 +49,7 @@ class Stack {
    * @returns {any | undefined}
    */
   pop() {
-    if (this.length === 0) return undefined;
+    if (!this.top) return undefined;
     const temp = this.top;
 
     if (this.top === this.bottom) this.bottom = null;
