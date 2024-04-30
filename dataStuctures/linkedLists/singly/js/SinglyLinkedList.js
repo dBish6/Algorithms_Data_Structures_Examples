@@ -187,13 +187,13 @@ class SinglyLinkedList {
       else if (index === this.length) return this.push(val);
 
       const newNode = new Node(val),
-        target = this.get(index);
+        prev = this.get(index - 1);
 
-      newNode.next = target.next;
-      target.next = newNode;
+      newNode.next = prev.next;
+      prev.next = newNode;
 
       this.length++;
-      return this;
+      return newNode;
     }
   }
 
