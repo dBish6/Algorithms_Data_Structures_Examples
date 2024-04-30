@@ -40,7 +40,7 @@ public class QuickSort {
      *
      * O(n log n) Time
      * @param arr The array to be sorted.
-     * @returns The sorted array.
+     * @return The sorted array.
      */
     public int[] sort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
