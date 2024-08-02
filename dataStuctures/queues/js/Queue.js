@@ -58,6 +58,26 @@ class Queue {
     this.length--;
     return temp.val;
   }
+
+  /**
+   * Returns the value of the first element in the queue without removing it.
+   *
+   * O(1) Time
+   * @returns {any | undefined} The value of the first element or undefined if the queue is empty.
+   */
+  peek() {
+    return this.first?.val;
+  }
+
+    /**
+   * Returns the value of the last element in the queue without removing it.
+   *
+   * O(1) Time
+   * @returns {any | undefined} The value of the last element or undefined if the queue is empty.
+   */
+  peekLast() {
+    return this.last?.val
+  }
 }
 
 module.exports = Queue;
