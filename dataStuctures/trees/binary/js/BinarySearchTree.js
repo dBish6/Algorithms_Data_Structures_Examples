@@ -8,7 +8,7 @@ const Queue = require("../../../queues/js/Queue");
  */
 
 /**
- * Represents a node in a singly linked list.
+ * Represents a node in a binary search tree (like a link list node).
  *
  * @implements {node}
  */
@@ -69,6 +69,13 @@ class BinarySearchTree {
     return handleNode(this.root, val) || undefined;
   }
 
+  /**
+   * Checks if a node with the given value exists in the tree.
+   *
+   * O(log n) Time
+   * @param {number} val The value to check.
+   * @returns {boolean}
+   */
   contains(val) {
     const handleNode = (node, val) => {
       if (!node) return false;
@@ -91,44 +98,144 @@ class BinarySearchTree {
    * @returns {Array<number>} An array of node values in the order they were visited.
    */
   breathFirstSearch() {
-    const order = { queue: new Queue(), result: [] };
+    const queue = new Queue(),
+      result = [];
 
-    if (this.root) order.queue.enqueue(this.root);
+    if (this.root) queue.enqueue(this.root);
 
-    while (order.queue.length) {
-      const node = order.queue.dequeue();
-      order.result.push(node.val);
+    while (queue.length) {
+      const node = queue.dequeue();
+      result.push(node.val);
 
-      if (node.left) order.queue.enqueue(node.left);
-      if (node.right) order.queue.enqueue(node.right);
+      if (node.left) queue.enqueue(node.left);
+      if (node.right) queue.enqueue(node.right);
     }
 
-    return order.result;
+    return result;
   }
 
   /**
-   * Performs pre-order traversal on the tree.
-   * 
-   * In a pre-order traversal, the nodes are visited from the left side then to the right side of the tree.
+   * Performs pre-order traversal on the tree - depth first search.
+   *
+   * In a pre-order traversal, the root node is visited first then from the left subtree to the
+   * right subtree of the tree down.
    *
    * O(n) Time
-   * 
    * @param {node} start The starting node for traversal. Defaults to the root.
    * @returns {Array<node>}
    */
-  PreOrderTraversal(start = this.root) {
-    let result = [],
-      current = start;
+  preOrderTraversal(start = this.root) {
+    const result = [];
 
     const traverse = (node) => {
       result.push(node.val);
 
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
-    }
-    if (current) traverse(current);
+    };
+    if (start) traverse(start);
 
     return result;
+  }
+
+  /**
+   * Performs post-order traversal on the tree - depth first search.
+   *
+   * Post-order traversal visits the entire left subtree first and travels up from the bottom, then
+   * visits the right the same way. Root node is visited last.
+   *
+   * O(n) Time
+   * @param {node} start The starting node for traversal. Defaults to the root.
+   * @returns {Array<node>}
+   */
+  postOrderTraversal(start = this.root) {
+    const result = [];
+
+    const traverse = (node) => {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+
+      result.push(node.val);
+    };
+    if (start) traverse(start);
+
+    return result;
+  }
+
+  /**
+   * Performs post-order traversal on the tree - depth first search.
+   *
+   * In-order traversal visits down the left subtree first, the root node next, and then visits down
+   * the right subtree.
+   *
+   * O(n) Time
+   * @param {node} start The starting node for traversal. Defaults to the root.
+   * @returns {Array<node>}
+   */
+  inOrderTraversal(start = this.root) {
+    const result = [];
+
+    const traverse = (node) => {
+      if (node.left) traverse(node.left);
+      result.push(node.val);
+      if (node.right) traverse(node.right);
+    };
+    if (start) traverse(start);
+
+    return result;
+  }
+
+  /**
+   * Prints the tree in a format that resembles a 'tree structure'.
+   * 
+   * O(n) Time
+   */
+  printTree() {
+    if (!this.root) return;
+  
+    const queue = new Queue(),
+      levels = [];
+    let maxLevel = 0;
+  
+    queue.enqueue({ node: this.root, level: 0 });
+  
+    while (queue.length > 0) {
+      const { node, level } = queue.dequeue();
+  
+      if (!levels[level]) levels[level] = [];
+  
+      levels[level].push(node ? node.val : null);
+  
+      if (node) {
+        if (node.left || node.right) {
+          queue.enqueue({ node: node.left, level: level + 1 });
+          queue.enqueue({ node: node.right, level: level + 1 });
+        }
+        maxLevel = Math.max(maxLevel, level + 1);
+      }
+    }
+  
+    const printLevel = (level, offset) => {
+      if (level >= levels.length) return;
+  
+      const nodes = levels[level],
+        spacesBetweenNodes = " ".repeat(offset);
+      
+      const line = nodes
+        .map((node, index) => {
+          if (node === null) {
+            return " ".repeat(offset);
+          } else {
+            return `${node}`.padStart(offset + `${node}`.length);
+          }
+        })
+        .join(spacesBetweenNodes);
+  
+      console.log(line);
+      printLevel(level + 1, offset / 2);
+    };
+  
+    printLevel(0, Math.pow(2, maxLevel) - 1);
   }
 }
 
