@@ -19,8 +19,7 @@ class MaxBinaryHeap {
    * Removes the max value within the heap.
    *
    * O(log n) Time
-   * @param val
-   * @returns {Array<number> | undefined}
+   * @returns {number | undefined} The removed value.
    */
   extractMax() {
     const max = this.values[0],
