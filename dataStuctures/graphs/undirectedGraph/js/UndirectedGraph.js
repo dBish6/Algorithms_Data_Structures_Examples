@@ -1,3 +1,6 @@
+const Stack = require("../../../stacks/js/Stack");
+const Queue = require("../../../queues/js/Queue");
+
 /**
  * A `undirected graph` that uses a `adjacency list`.
  */
@@ -47,7 +50,7 @@ class UndirectedGraph {
    * @throws An error if the vertex doesn't exist in the graph.
    */
   removeVertex(vertex) {
-    for (const edge of this.adjacencyList[vertex]) this.removeEdge(vertex, edge);
+    for (const neighbor of this.adjacencyList[vertex]) this.removeEdge(vertex, neighbor);
     delete this.adjacencyList[vertex];
   }
 
@@ -64,8 +67,88 @@ class UndirectedGraph {
       if (!this.adjacencyList[vert]) throw new Error("One or both vertices doesn't exist in the graph.");
 
       this.adjacencyList[vert] = this.adjacencyList[vert].filter(
-        (edge) => edge !== (i === 0 ? vertex2 : vertex1)
+        (neighbor) => neighbor !== (i === 0 ? vertex2 : vertex1)
       );
     });
+  }
+
+  /**
+   * Performs a depth-first search (BFS) traversal on the graph recursively.
+   *
+   * O(n) Time
+   * @param {string} start Starting vertex for traversal.
+   * @returns {Array<number>} An array of values in the order they were visited.
+   */
+  depthFirstSearchRecursive(start) {
+    const visited = new Set(),
+      result = [];
+
+    const traverse = (vertex) => {
+      if (!vertex) return;
+
+      visited.add(vertex);
+      result.push(vertex);
+      for (const neighbor of this.adjacencyList[vertex]) {
+        if (!visited.has(neighbor)) traverse(neighbor);
+      }
+
+      return result;
+    };
+
+    return traverse(start);
+  }
+
+  /**
+   * Performs a depth-first search (BFS) traversal on the graph.
+   *
+   * O(n) Time
+   * @returns {Array<number>} An array of values in the order they were visited.
+   */
+  depthFirstSearchIterative(start) {
+    const stack = new Stack(),
+      visited = new Set([start]),
+      result = [];
+
+    stack.push(start);
+    while (stack.length) {
+      const vertex = stack.pop();
+      result.push(vertex);
+
+      for (const neighbor of this.adjacencyList[vertex]) {
+        if (!visited.has(neighbor)) {
+          stack.push(neighbor);
+          visited.add(neighbor);
+        }
+      }
+    }
+
+    return result;
+  }
+
+  /**
+   * Performs a breath-first search (BFS) traversal on the graph.
+   *
+   * O(n) Time
+   * @returns {Array<number>} An array of values in the order they were visited.
+   */
+  breathFirstSearch(start) {
+    const queue = new Queue(),
+      visited = new Set([start]),
+      result = [];
+
+    queue.enqueue(start);
+    while (queue.length) {
+      const vertex = queue.dequeue();
+      result.push(vertex);
+
+      for (const neighbor of this.adjacencyList[vertex]) {
+        if (!visited.has(neighbor)) {
+          queue.enqueue(neighbor);
+          visited.add(neighbor);
+        }
+      }
+    }
+
+    return result;
   }
 }
