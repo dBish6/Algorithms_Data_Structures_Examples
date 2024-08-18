@@ -1,8 +1,8 @@
 /**
  * Represents a node from a singly linked list.
  *
- * @property {any} val - The value of the node.
- * @property {node | null} next - Reference to the next node.
+ * @property {any} val The value of the node.
+ * @property {node | null} next Reference to the next node.
  */
 class Node {
   constructor(val) {
@@ -39,7 +39,7 @@ class Stack {
       this.top = node;
     }
 
-    return this.length++;
+    return this.length += 1;
   }
 
   /**
