@@ -59,7 +59,7 @@ class PriorityQueue {
    * Moves the newly added value up the heap to ensure that the parent nodes are always smaller than their child nodes.
    *
    * O(log n) Time
-   * @returns {Array<number>}
+   * @returns {Array<node>}
    */
   #heapifyUp() {
     let i = this.values.length - 1;
@@ -79,7 +79,7 @@ class PriorityQueue {
    * Moves the root value down the heap to ensure the heap property is maintained.
    *
    * O(log n) Time
-   * @returns {Array<number>}
+   * @returns {Array<node>}
    */
   #heapifyDown() {
     let i = 0;

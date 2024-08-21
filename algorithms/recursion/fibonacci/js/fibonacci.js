@@ -26,7 +26,7 @@ console.log("fib", fib(9));
  * O(n) Time
  * @dBish6 Author
  * @param {number} num The position in the Fibonacci sequence.
- * @returns {Object} The Fibonacci number at the specified position.
+ * @returns {number} The Fibonacci number at the specified position.
  */
 function fibOptimal(num) {
   const memo = [undefined, 1, 1];

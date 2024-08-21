@@ -2,8 +2,8 @@
 
 /**
  * @typedef {Object} node
- * @property {any} val - The value of the node.
- * @property {node | null} next - Reference to the next node.
+ * @property {any} val The value of the node.
+ * @property {node | null} next Reference to the next node.
  */
 
 /**
@@ -120,7 +120,7 @@ class SinglyLinkedList {
    * Get a node at a certain index.
    *
    * O(n) Time
-   * @param index
+   * @param {number} index
    * @returns {node | undefined}
    */
   get(index) {

@@ -7,7 +7,7 @@
  * @typedef {Object} node
  * @property {any} val The value of the node.
  * @property {node | null} next Reference to the next node.
- * @property {node | null} prev Reference to the previous node.
+ * @property {node | null} prev Reference to the next node.
  */
 
 /**
@@ -30,10 +30,15 @@ class Node {
  * just focuses on efficiently adding and removing elements from both ends.
  */
 class DequeLinkedList {
-  constructor() {
+  /**
+   * @param {Array<any>} [values] An array of one or more values to be added.
+   */
+  constructor(values) {
     this.head = null;
     this.tail = null;
     this.length = 0;
+
+    if (values) for (const val of values) this.enqueueFront(val);
   }
 
   /**
