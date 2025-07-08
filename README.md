@@ -1,6 +1,3 @@
-## 🚧🚧 In Progress
-This repository is still under construction, everything has not been added yet.
-
 # Algorithms_Data_Structures_Examples
 Pretty much all of your standardized algorithms and data structures in one repository.
 
